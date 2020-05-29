@@ -6,3 +6,7 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+
+//import any css files here and will apply effect by import main css file in public folder
+@import '~admin-lte/dist/css/adminlte.css';
