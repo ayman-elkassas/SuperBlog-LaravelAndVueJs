@@ -2,6 +2,8 @@
     "private": true,
     "scripts": {
         "dev": "npm run development",
+        "install": "npm install",
+        "uninstall": "npm uninstall",
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
         "watch": "npm run development -- --watch",
         "watch-poll": "npm run watch -- --watch-poll",
@@ -24,6 +26,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "admin-lte": "^3.0.0-alpha.2"
+        "admin-lte": "^3.0.0-alpha.2",
+        "vue-router": "^3.3.2"
     }
 }
