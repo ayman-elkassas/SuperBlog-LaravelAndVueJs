@@ -36,7 +36,12 @@
             add_category(){
                 this.form.post('/add_category')
                     .then((response)=>{
-                        console.log(response.data);
+                        // console.log(response.data);
+                        this.$router.push('/category-list');
+                        toast.fire({
+                            icon: 'success',
+                            title: 'Category Added Successfully'
+                        });
                     })
                     .catch(()=>{
 
