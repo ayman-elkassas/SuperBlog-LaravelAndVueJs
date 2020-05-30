@@ -25,3 +25,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //Routes admin
 Route::get('/{anypath}','HomeController@index')->where('path','.*');
+
+//category
+Route::post('/add_category','CategoryController@add_category');

@@ -5,11 +5,13 @@
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form role="form">
+        <form role="form" @click.prevent="add_category()">
             <div class="card-body">
                 <div class="form-group">
-                    <label>Add New Category</label>
-                    <input type="text" class="form-control" placeholder="Add New Category">
+                    <label for="categoryId">Add New Category</label>
+                    <input name="cat_name" type="text" v-model="form.cat_name" class="form-control" id="categoryId"
+                           placeholder="Add New Category" :class="{'is-invalid':form.errors.has('cat_name')}">
+                    <has-error :form="form" field="cat_name"></has-error>
                 </div>
             </div>
             <!-- /.card-body -->
@@ -23,7 +25,24 @@
 
 <script>
     export default {
-        name: "New"
+        name: "New",
+        data(){
+            return{
+                form:new Form({
+                   cat_name:''
+                })
+            }
+        },methods:{
+            add_category(){
+                this.form.post('/add_category')
+                    .then((response)=>{
+                        console.log(response.data);
+                    })
+                    .catch(()=>{
+
+                    });
+            }
+        }
     }
 </script>
 
