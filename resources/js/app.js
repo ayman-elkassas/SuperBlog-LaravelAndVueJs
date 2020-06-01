@@ -6,6 +6,13 @@ import VueRouter from 'vue-router';
 import {routes} from './routes'
 Vue.use(VueRouter);
 
+//Support Vuex
+import Vuex from 'vuex';
+Vue.use(Vuex);
+
+import storeData from './store/index'
+const store=new Vuex.Store(storeData);
+
 //v-form
 import {Form,HasError,AlertError} from 'vform';
 
@@ -45,5 +52,6 @@ const router=new VueRouter({
 //main vue object
 const app = new Vue({
     el: '#app',
-    router
+    router,
+    store
 });
