@@ -3,7 +3,7 @@
         <!-- Main content -->
         <section class="content">
             <div class="row justify-content-around">
-                <div class="col-8">
+                <div class="col-10">
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Category List</h3>
@@ -21,6 +21,7 @@
                                 <tr>
                                     <th>S1</th>
                                     <th>Name</th>
+                                    <th>Date</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
@@ -29,8 +30,9 @@
                                 <tr v-for="(category,index) in getAllCategory" :key="category.id">
                                     <td>{{index+1}}</td>
                                     <td>{{category.cat_name}}</td>
-                                    <td><a href="" class="btn btn-success">Edit</a></td>
-                                    <td><a href="" class="btn btn-danger">Delete</a></td>
+                                    <td>{{category.created_at | timeformat}}</td>
+                                    <td><router-link :to="'/edit-category/${category.id}'" class="btn btn-success">Edit</router-link></td>
+                                    <td><a href="" @click.prevent="deletecategory(category.id)" class="btn btn-danger">Delete</a></td>
                                 </tr>
 
                                 </tbody>
@@ -60,7 +62,24 @@
             },
         },
         methods:{
-
+            deletecategory($id){
+                // console.log(id);
+                axios.get('/category/'+$id)
+                    .then(()=>{
+                        //success
+                        this.$store.dispatch('allCategory');
+                        toast.fire({
+                            icon: 'success',
+                            title:'Category deleted successfully'
+                        });
+                    })
+                    .catch(()=>{
+                        toast.fire({
+                            icon:'error',
+                            title:'Category does not deleted successfully'
+                        })
+                    });
+            }
         }
     }
 </script>

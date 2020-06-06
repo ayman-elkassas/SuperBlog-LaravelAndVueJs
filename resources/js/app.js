@@ -10,6 +10,8 @@ Vue.use(VueRouter);
 import Vuex from 'vuex';
 Vue.use(Vuex);
 
+import {filter} from './filter'
+
 import storeData from './store/index'
 const store=new Vuex.Store(storeData);
 
