@@ -29,9 +29,11 @@
                                 <tbody>
                                 <tr v-for="(category,index) in getAllCategory" :key="category.id">
                                     <td>{{index+1}}</td>
+<!--                                    <td>{{category.id}}</td>-->
                                     <td>{{category.cat_name}}</td>
                                     <td>{{category.created_at | timeformat}}</td>
-                                    <td><router-link :to="'/edit-category/${category.id}'" class="btn btn-success">Edit</router-link></td>
+<!--                                TODO : `` not '' when passing values-->
+                                    <td><router-link :to="`/edit-category/${category.id}`" class="btn btn-success">Edit</router-link></td>
                                     <td><a href="" @click.prevent="deletecategory(category.id)" class="btn btn-danger">Delete</a></td>
                                 </tr>
 

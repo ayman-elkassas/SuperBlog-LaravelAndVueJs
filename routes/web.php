@@ -27,6 +27,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Route::get('/{anypath}','HomeController@index')->where('path','.*');
 
 //category
-Route::post('/add_category','CategoryController@add_category');
 Route::get('/category','CategoryController@all_category');
+Route::post('/add_category','CategoryController@add_category');
 Route::get('/category/{id}','CategoryController@delete_category');
+Route::get('/editcategory/{id}','CategoryController@edit_category');
+Route::post('update-category/{id}','CategoryController@update_category');
+
+//post
+Route::get('/post','PostController@all_post');
