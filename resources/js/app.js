@@ -18,6 +18,12 @@ const store=new Vuex.Store(storeData);
 //v-form
 import {Form,HasError,AlertError} from 'vform';
 
+//MARK-DOWN
+import 'v-markdown-editor/dist/v-markdown-editor.css';
+import Editor from 'v-markdown-editor'
+// global register
+Vue.use(Editor);
+
 Vue.component(HasError.name,HasError);
 Vue.component(AlertError.name,AlertError);
 window.Form=Form;
