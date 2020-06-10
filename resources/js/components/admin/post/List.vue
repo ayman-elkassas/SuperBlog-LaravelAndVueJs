@@ -36,10 +36,10 @@
                                     <td v-if="post.category">{{post.category.cat_name}}</td>
                                     <td>{{post.title | sortlength(20,"---")}}</td>
                                     <td>{{post.description | sortlength(40,"....")}}</td>
-                                    <td><img :src="post.photo" alt="" width="40" height="40"></td>
+                                    <td><img :src="ourImage(post.photo)" alt="" width="40" height="40"></td>
                                     <!--                                TODO : `` not '' when passing values-->
                                     <td><router-link to="" class="btn btn-success">Edit</router-link></td>
-                                    <td><a href="" class="btn btn-danger">Delete</a></td>
+                                    <td><a href="" @click.prevent="deletePost(post.id)" class="btn btn-danger">Delete</a></td>
                                 </tr>
 
                                 </tbody>
@@ -68,26 +68,32 @@
                 return this.$store.getters.getPost
             },
         },
-        // methods:{
-        //     deletecategory($id){
-        //         // console.log(id);
-        //         axios.get('/category/'+$id)
-        //             .then(()=>{
-        //                 //success
-        //                 this.$store.dispatch('allCategory');
-        //                 toast.fire({
-        //                     icon: 'success',
-        //                     title:'Category deleted successfully'
-        //                 });
-        //             })
-        //             .catch(()=>{
-        //                 toast.fire({
-        //                     icon:'error',
-        //                     title:'Category does not deleted successfully'
-        //                 })
-        //             });
-        //     }
-        // }
+        methods:{
+            ourImage(img){
+                return "uploadimage/"+img;
+            },
+            deletePost(id){
+                console.log(id);
+            }
+            // deletecategory($id){
+            //     // console.log(id);
+            //     axios.get('/category/'+$id)
+            //         .then(()=>{
+            //             //success
+            //             this.$store.dispatch('allCategory');
+            //             toast.fire({
+            //                 icon: 'success',
+            //                 title:'Category deleted successfully'
+            //             });
+            //         })
+            //         .catch(()=>{
+            //             toast.fire({
+            //                 icon:'error',
+            //                 title:'Category does not deleted successfully'
+            //             })
+            //         });
+            // }
+        }
     }
 </script>
 
