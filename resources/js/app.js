@@ -54,7 +54,7 @@ Vue.component('admin-main', require('./components/admin/AdminMaster.vue').defaul
 //register your routes
 const router=new VueRouter({
     routes, //short for 'routes : routes',
-    mode:'history'
+    mode:'hash'
 });
 
 //main vue object

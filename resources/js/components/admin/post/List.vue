@@ -73,7 +73,16 @@
                 return "uploadimage/"+img;
             },
             deletePost(id){
-                console.log(id);
+                // console.log(id);
+                axios.get("/delete/"+id).then(()=>{
+                    this.$store.dispatch('allPost');
+                    toast.fire({
+                        icon: 'success',
+                        title: 'Post Deleted Successfully',
+                    });
+                }).catch(()=>{
+
+                });
             }
             // deletecategory($id){
             //     // console.log(id);

@@ -4811,27 +4811,43 @@ __webpack_require__.r(__webpack_exports__);
     getAllPost: function getAllPost() {
       return this.$store.getters.getPost;
     }
-  } // methods:{
-  //     deletecategory($id){
-  //         // console.log(id);
-  //         axios.get('/category/'+$id)
-  //             .then(()=>{
-  //                 //success
-  //                 this.$store.dispatch('allCategory');
-  //                 toast.fire({
-  //                     icon: 'success',
-  //                     title:'Category deleted successfully'
-  //                 });
-  //             })
-  //             .catch(()=>{
-  //                 toast.fire({
-  //                     icon:'error',
-  //                     title:'Category does not deleted successfully'
-  //                 })
-  //             });
-  //     }
-  // }
+  },
+  methods: {
+    ourImage: function ourImage(img) {
+      return "uploadimage/" + img;
+    },
+    deletePost: function deletePost(id) {
+      var _this = this;
 
+      // console.log(id);
+      axios.get("/delete/" + id).then(function () {
+        _this.$store.dispatch('allPost');
+
+        toast.fire({
+          icon: 'success',
+          title: 'Post Deleted Successfully'
+        });
+      })["catch"](function () {});
+    } // deletecategory($id){
+    //     // console.log(id);
+    //     axios.get('/category/'+$id)
+    //         .then(()=>{
+    //             //success
+    //             this.$store.dispatch('allCategory');
+    //             toast.fire({
+    //                 icon: 'success',
+    //                 title:'Category deleted successfully'
+    //             });
+    //         })
+    //         .catch(()=>{
+    //             toast.fire({
+    //                 icon:'error',
+    //                 title:'Category does not deleted successfully'
+    //             })
+    //         });
+    // }
+
+  }
 });
 
 /***/ }),
@@ -87505,7 +87521,7 @@ var render = function() {
                         _c("td", [
                           _c("img", {
                             attrs: {
-                              src: post.photo,
+                              src: _vm.ourImage(post.photo),
                               alt: "",
                               width: "40",
                               height: "40"
@@ -87528,7 +87544,22 @@ var render = function() {
                           1
                         ),
                         _vm._v(" "),
-                        _vm._m(1, true)
+                        _c("td", [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "btn btn-danger",
+                              attrs: { href: "" },
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.deletePost(post.id)
+                                }
+                              }
+                            },
+                            [_vm._v("Delete")]
+                          )
+                        ])
                       ])
                     }),
                     0
@@ -87564,16 +87595,6 @@ var staticRenderFns = [
         _c("th", [_vm._v("Edit")]),
         _vm._v(" "),
         _c("th", [_vm._v("Delete")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("a", { staticClass: "btn btn-danger", attrs: { href: "" } }, [
-        _vm._v("Delete")
       ])
     ])
   }
@@ -104160,7 +104181,7 @@ Vue.component('admin-main', __webpack_require__(/*! ./components/admin/AdminMast
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
   routes: _routes__WEBPACK_IMPORTED_MODULE_1__["routes"],
   //short for 'routes : routes',
-  mode: 'history'
+  mode: 'hash'
 }); //main vue object
 
 var app = new Vue({
