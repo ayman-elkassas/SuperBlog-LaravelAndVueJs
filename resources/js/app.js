@@ -50,6 +50,7 @@ window.toast=Toast;
 
 //register components here
 Vue.component('admin-main', require('./components/admin/AdminMaster.vue').default);
+Vue.component('home-main', require('./components/public/PublicMaster.vue').default);
 
 //register your routes
 const router=new VueRouter({

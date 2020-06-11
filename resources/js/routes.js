@@ -7,6 +7,8 @@ import EditCategory from './components/admin/category/Edit.vue';
 import PostList from './components/admin/post/List.vue';
 import AddPost from './components/admin/post/New.vue';
 import EditPost from './components/admin/post/Edit.vue';
+import PublicHome from "./components/public/PublicHome";
+import BlogPost from "./components/public/blog/BlogPost";
 
 //export to read it from outside
 export const routes=[
@@ -19,4 +21,9 @@ export const routes=[
     {path:'/post-list',component:PostList},
     {path:'/add-post',component:AddPost},
     {path:'/edit-post/:postid',component:EditPost},
+    //Frontend Route
+    {path:'/',component:PublicHome},
+    {path:'/blog',component:BlogPost},
+
 ];
+

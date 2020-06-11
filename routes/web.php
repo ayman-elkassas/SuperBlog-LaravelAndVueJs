@@ -23,7 +23,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//Routes admin
+//Admin Control Routes
+
 //Route::get('/{anypath}','HomeController@index')->where('path','.*');
 
 //another way to put middleware group (rather than constructor method)
@@ -44,3 +45,4 @@ Route::group(['middleware'=>['auth']],function (){
     Route::post('/update/{id}','PostController@update_post');
 });
 
+//Frontend Route
