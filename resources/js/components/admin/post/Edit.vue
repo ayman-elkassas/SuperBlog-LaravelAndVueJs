@@ -107,14 +107,15 @@
                 }
             },
             updatePost(){
-                debugger;
-                this.form.post('/save_post')
+                //if using vuex routing use ``
+                //if you want to use axios in post should get response object from form manual
+                //but for easy use this.form to get form object and send it automatic
+                this.form.post(`update/${this.$route.params.postid}`)
                     .then(()=>{
-                        console.log("success");
                         this.$router.push('/post-list');
                         toast.fire({
                             icon: 'success',
-                            title: 'Post Updated successfully'
+                            title: 'Post Updated Successfully'
                         })
                     })
                     .catch(()=>{

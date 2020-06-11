@@ -4840,15 +4840,16 @@ __webpack_require__.r(__webpack_exports__);
     updatePost: function updatePost() {
       var _this3 = this;
 
-      debugger;
-      this.form.post('/save_post').then(function () {
-        console.log("success");
+      alert("happy"); //if using vuex routing use ``
+      //if you want to use axios in post should get response object from form manual
+      //but for easy use this.form to get form object and send it automatic
 
+      this.form.post("update/".concat(this.$route.params.postid)).then(function () {
         _this3.$router.push('/post-list');
 
         toast.fire({
           icon: 'success',
-          title: 'Post Updated successfully'
+          title: 'Post Updated Successfully'
         });
       })["catch"](function () {
         console.log("error");
