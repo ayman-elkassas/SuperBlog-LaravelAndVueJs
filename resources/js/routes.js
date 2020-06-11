@@ -18,5 +18,5 @@ export const routes=[
     //post
     {path:'/post-list',component:PostList},
     {path:'/add-post',component:AddPost},
-    {path:'/edit-post/:categoryid',component:EditPost},
+    {path:'/edit-post/:postid',component:EditPost},
 ];

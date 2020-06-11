@@ -4728,8 +4728,133 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Edit"
+  name: "Edit",
+  data: function data() {
+    return {
+      form: new Form({
+        title: "",
+        description: "",
+        category_id: "",
+        photo: ""
+      })
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    //to insert old values
+    axios.get("post/".concat(this.$route.params.postid)).then(function (response) {
+      console.log(response.data.post);
+
+      _this.form.fill(response.data.post);
+    });
+  },
+  mounted: function mounted() {
+    this.$store.dispatch("allCategory");
+  },
+  computed: {
+    getallCategory: function getallCategory() {
+      return this.$store.getters.getCategory;
+    }
+  },
+  methods: {
+    changePhoto: function changePhoto(event) {
+      var _this2 = this;
+
+      var file = event.target.files[0];
+
+      if (file.size > 1048576) {
+        debugger;
+        toast.fire({
+          icon: 'failed',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+          footer: '<a href>Why do I have this issue?</a>'
+        });
+      } else {
+        debugger;
+        var reader = new FileReader();
+
+        reader.onload = function (event) {
+          _this2.form.photo = event.target.result;
+          console.log(event.target.result);
+        };
+
+        reader.readAsDataURL(file);
+      }
+    },
+    ourImage: function ourImage() {
+      var img = this.form.photo;
+
+      if (img.length > 100) {
+        return this.form.photo;
+      } else {
+        return "uploadimage/".concat(this.form.photo);
+      }
+    },
+    updatePost: function updatePost() {
+      var _this3 = this;
+
+      debugger;
+      this.form.post('/save_post').then(function () {
+        console.log("success");
+
+        _this3.$router.push('/post-list');
+
+        toast.fire({
+          icon: 'success',
+          title: 'Post Updated successfully'
+        });
+      })["catch"](function () {
+        console.log("error");
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -4828,25 +4953,7 @@ __webpack_require__.r(__webpack_exports__);
           title: 'Post Deleted Successfully'
         });
       })["catch"](function () {});
-    } // deletecategory($id){
-    //     // console.log(id);
-    //     axios.get('/category/'+$id)
-    //         .then(()=>{
-    //             //success
-    //             this.$store.dispatch('allCategory');
-    //             toast.fire({
-    //                 icon: 'success',
-    //                 title:'Category deleted successfully'
-    //             });
-    //         })
-    //         .catch(()=>{
-    //             toast.fire({
-    //                 icon:'error',
-    //                 title:'Category does not deleted successfully'
-    //             })
-    //         });
-    // }
-
+    }
   }
 });
 
@@ -87429,9 +87536,203 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h2", [_vm._v("Edit Post")])
+  return _c("div", { staticClass: "card card-primary" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c(
+      "form",
+      {
+        attrs: { role: "form", enctype: "multipart/form-data" },
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.updatePost()
+          }
+        }
+      },
+      [
+        _c("div", { staticClass: "card-body" }, [
+          _c(
+            "div",
+            { staticClass: "form-group" },
+            [
+              _c("label", { attrs: { for: "postId" } }, [
+                _vm._v("Update Post")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.title,
+                    expression: "form.title"
+                  }
+                ],
+                staticClass: "form-control",
+                class: { "is-invalid": _vm.form.errors.has("title") },
+                attrs: {
+                  type: "text",
+                  id: "postId",
+                  placeholder: "Add New Post",
+                  name: "title"
+                },
+                domProps: { value: _vm.form.title },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.form, "title", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("has-error", { attrs: { form: _vm.form, field: "title" } })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "form-group" },
+            [
+              _c("label", { attrs: { for: "descriptionId" } }, [
+                _vm._v("Add New Description")
+              ]),
+              _vm._v(" "),
+              _c("markdown-editor", {
+                attrs: { id: "descriptionId" },
+                model: {
+                  value: _vm.form.description,
+                  callback: function($$v) {
+                    _vm.$set(_vm.form, "description", $$v)
+                  },
+                  expression: "form.description"
+                }
+              }),
+              _vm._v(" "),
+              _c("has-error", {
+                attrs: { form: _vm.form, field: "description" }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "form-group" },
+            [
+              _c("label", [_vm._v("Select")]),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.cat_id,
+                      expression: "form.cat_id"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  class: { "is-invalid": _vm.form.errors.has("cat_id") },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.form,
+                        "cat_id",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { disabled: "", value: "" } }, [
+                    _vm._v("Select Category")
+                  ]),
+                  _vm._v(" "),
+                  _vm._l(_vm.getallCategory, function(category) {
+                    return _c("option", { domProps: { value: category.id } }, [
+                      _vm._v(_vm._s(category.cat_name))
+                    ])
+                  })
+                ],
+                2
+              ),
+              _vm._v(" "),
+              _c("has-error", { attrs: { form: _vm.form, field: "cat_id" } })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "form-group" },
+            [
+              _c("input", {
+                class: { "is-invalid": _vm.form.errors.has("photo") },
+                attrs: { name: "photo", type: "file" },
+                on: {
+                  change: function($event) {
+                    return _vm.changePhoto($event)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("img", {
+                attrs: {
+                  src: _vm.ourImage(),
+                  alt: "",
+                  width: "80",
+                  height: "80"
+                }
+              }),
+              _vm._v(" "),
+              _c("has-error", { attrs: { form: _vm.form, field: "photo" } })
+            ],
+            1
+          )
+        ]),
+        _vm._v(" "),
+        _vm._m(1)
+      ]
+    )
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", { staticClass: "card-title" }, [_vm._v("Update Post")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-footer" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Update")]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -87536,7 +87837,7 @@ var render = function() {
                               "router-link",
                               {
                                 staticClass: "btn btn-success",
-                                attrs: { to: "" }
+                                attrs: { to: "edit-post/" + post.id }
                               },
                               [_vm._v("Edit")]
                             )
@@ -104866,7 +105167,7 @@ var routes = [{
   path: '/add-post',
   component: _components_admin_post_New_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
 }, {
-  path: '/edit-post/:categoryid',
+  path: '/edit-post/:postid',
   component: _components_admin_post_Edit_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
 }];
 

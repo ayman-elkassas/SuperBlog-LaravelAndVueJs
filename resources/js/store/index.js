@@ -28,7 +28,8 @@ export default {
                     context.commit('posts',response.data.posts)
                 })
         }
-    },mutations:{
+    },
+    mutations:{
         categories(state,data){
             return state.category=data;
         },

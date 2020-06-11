@@ -38,7 +38,7 @@
                                     <td>{{post.description | sortlength(40,"....")}}</td>
                                     <td><img :src="ourImage(post.photo)" alt="" width="40" height="40"></td>
                                     <!--                                TODO : `` not '' when passing values-->
-                                    <td><router-link to="" class="btn btn-success">Edit</router-link></td>
+                                    <td><router-link :to="`edit-post/${post.id}`" class="btn btn-success">Edit</router-link></td>
                                     <td><a href="" @click.prevent="deletePost(post.id)" class="btn btn-danger">Delete</a></td>
                                 </tr>
 
@@ -74,34 +74,17 @@
             },
             deletePost(id){
                 // console.log(id);
-                axios.get("/delete/"+id).then(()=>{
-                    this.$store.dispatch('allPost');
-                    toast.fire({
-                        icon: 'success',
-                        title: 'Post Deleted Successfully',
+                axios.get("/delete/"+id)
+                    .then(()=>{
+                        this.$store.dispatch('allPost');
+                        toast.fire({
+                            icon: 'success',
+                            title: 'Post Deleted Successfully',
+                        })
+                    })
+                    .catch(()=>{
                     });
-                }).catch(()=>{
-
-                });
             }
-            // deletecategory($id){
-            //     // console.log(id);
-            //     axios.get('/category/'+$id)
-            //         .then(()=>{
-            //             //success
-            //             this.$store.dispatch('allCategory');
-            //             toast.fire({
-            //                 icon: 'success',
-            //                 title:'Category deleted successfully'
-            //             });
-            //         })
-            //         .catch(()=>{
-            //             toast.fire({
-            //                 icon:'error',
-            //                 title:'Category does not deleted successfully'
-            //             })
-            //         });
-            // }
         }
     }
 </script>
