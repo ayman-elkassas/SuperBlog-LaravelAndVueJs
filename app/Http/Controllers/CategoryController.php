@@ -7,6 +7,17 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    //one method if you want to add middleware excuted before calling routing apis from web
+    //put your middlewares in __construct
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     //
     public function add_category(Request $request)
     {

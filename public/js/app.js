@@ -4840,10 +4840,9 @@ __webpack_require__.r(__webpack_exports__);
     updatePost: function updatePost() {
       var _this3 = this;
 
-      alert("happy"); //if using vuex routing use ``
+      //if using vuex routing use ``
       //if you want to use axios in post should get response object from form manual
       //but for easy use this.form to get form object and send it automatic
-
       this.form.post("update/".concat(this.$route.params.postid)).then(function () {
         _this3.$router.push('/post-list');
 
