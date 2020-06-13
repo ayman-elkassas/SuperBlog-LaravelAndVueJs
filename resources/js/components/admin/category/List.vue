@@ -18,6 +18,15 @@
                         <div class="card-body">
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
+                                <th>
+                                    <select name="" id="" v-model="select" @change="deleteSelected">
+                                        <option value="">Select</option>
+                                        <option value="">Delete all</option>
+                                    </select><br>
+                                    <input type="checkbox" @click.prevent="selectAll" v-model="all_select">
+                                    <span v-if="all_select==false">Check All</span>
+                                    <span v-else>Uncheck All</span>
+                                </th>
                                 <tr>
                                     <th>S1</th>
                                     <th>Name</th>
@@ -28,6 +37,7 @@
                                 </thead>
                                 <tbody>
                                 <tr v-for="(category,index) in getAllCategory" :key="category.id">
+                                    <td><input type="checkbox" v-model="categoryItem" :value="category.id" ></td>
                                     <td>{{index+1}}</td>
 <!--                                    <td>{{category.id}}</td>-->
                                     <td>{{category.cat_name}}</td>
@@ -55,6 +65,13 @@
 <script>
     export default {
         name: "List",
+        data(){
+            return{
+                categoryItem:[],
+                select:'',
+                all_select:false
+            }
+        },
         mounted() {
             this.$store.dispatch('allCategory')
         },
@@ -81,6 +98,31 @@
                             title:'Category does not deleted successfully'
                         })
                     });
+            },
+            deleteSelected(){
+                console.log(this.categoryItem);
+                axios.get('/deletecategory/'+this.categoryItem)
+                    .then(()=>{
+                        this.categoryItem = [];
+                        //return read all current category e.g refresh items
+                        this.$store.dispatch("allCategory");
+                        toast.fire({
+                            icon: 'success',
+                            title:'Category deleted successfully'
+                        });
+                    })
+            },
+            selectAll(){
+                if(this.all_select==false){
+                    // get id of selected item
+                    this.all_select = true;
+                    for(var category in this.getallCategory){
+                        this.categoryItem.push(this.getallCategory[category].id)
+                    }
+                }else{
+                    this.all_select = false;
+                    this.categoryItem = []
+                }
             }
         }
     }

@@ -60,4 +60,13 @@ class CategoryController extends Controller
         $category->cat_name = $request->cat_name;
         $category->save();
     }
+
+    public function selected_category($ids){
+        //get ids[] and separate with , [1,2,3]
+        $all_id = explode(',',$ids);
+        foreach ($all_id as $id){
+            $category = Category::find($id);
+            $category->delete();
+        }
+    }
 }

@@ -98,7 +98,7 @@ export default {
             state.blogpost = payload
         },
         getSearchPost(state,payload){
-            console.log(payload);
+            // console.log(payload);
             state.blogpost = payload
         }
 
