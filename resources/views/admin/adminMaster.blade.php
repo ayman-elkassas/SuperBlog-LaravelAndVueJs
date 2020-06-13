@@ -131,6 +131,12 @@
 </div>
 <!-- ./wrapper -->
 
+<script>
+    $(function () {
+        x=2;
+    })
+</script>
+
 <script src="{{ asset('js/app.js') }}" defer></script>
 
 </body>

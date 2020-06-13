@@ -11,7 +11,7 @@ class PostController extends Controller
 {
     //
     public function all_post():object {
-        $post=Post::with('user','category')->get();
+        $post=Post::with('user','category')->orderBy('id','desc')->get();
         return response()->json([
             'posts'=>$post
         ],200);

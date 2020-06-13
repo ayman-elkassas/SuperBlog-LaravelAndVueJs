@@ -5132,6 +5132,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _BlogSidebar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BlogSidebar */ "./resources/js/components/public/blog/BlogSidebar.vue");
 //
 //
 //
@@ -5195,90 +5196,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "BlogPost",
+  components: {
+    BlogSidebar: _BlogSidebar__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  mounted: function mounted() {
+    //launch action and get data
+    this.$store.dispatch('getblogPost');
+  },
+  computed: {
+    blogpost: function blogpost() {
+      return this.$store.getters.getblogPost;
+    }
+  },
+  methods: {}
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/public/blog/BlogSidebar.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/public/blog/BlogSidebar.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 //
 //
 //
@@ -5342,7 +5288,84 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "BlogPost"
+  name: "BlogSidebar"
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/public/blog/SingleBlog.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/public/blog/SingleBlog.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _BlogSidebar_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BlogSidebar.vue */ "./resources/js/components/public/blog/BlogSidebar.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "SingleBlog",
+  components: {
+    BlogSidebar: _BlogSidebar_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  computed: {
+    singlepost: function singlepost() {
+      return this.$store.getters.singlepost;
+    }
+  },
+  methods: {
+    singlePost: function singlePost() {
+      debugger;
+      this.$store.dispatch('getPostById', this.$route.params.id);
+    }
+  },
+  mounted: function mounted() {
+    this.singlePost();
+  },
+  watch: {
+    $route: function $route(to, from) {
+      this.singlePost();
+    }
+  }
 });
 
 /***/ }),
@@ -88451,6 +88474,208 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  return _c("span", { attrs: { id: "blogpost" } }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("section", { attrs: { id: "content" } }, [
+      _c("div", { staticClass: "container" }, [
+        _c(
+          "div",
+          { staticClass: "row" },
+          [
+            _c(
+              "div",
+              { staticClass: "span8" },
+              [
+                _vm._l(_vm.blogpost, function(post) {
+                  return _c("article", [
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "span8" }, [
+                        _c("div", { staticClass: "post-image" }, [
+                          _c("div", { staticClass: "post-heading" }, [
+                            _c("h3", [
+                              _c("a", { attrs: { href: "#" } }, [
+                                _vm._v(_vm._s(post.title))
+                              ])
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("img", {
+                            staticStyle: {
+                              width: "50%",
+                              height: "fit-content"
+                            },
+                            attrs: { src: "uploadimage/" + post.photo, alt: "" }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("p", [
+                          _vm._v(
+                            "\n                  " +
+                              _vm._s(
+                                _vm._f("sortlength")(
+                                  post.description,
+                                  500,
+                                  "..."
+                                )
+                              ) +
+                              "\n              "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "bottom-article" },
+                          [
+                            _c("ul", { staticClass: "meta-post" }, [
+                              _vm._m(1, true),
+                              _vm._v(" "),
+                              _c("li", [
+                                post.user
+                                  ? _c("i", { staticClass: "icon-user" })
+                                  : _vm._e(),
+                                _c("a", { attrs: { href: "#" } }, [
+                                  _vm._v(_vm._s(post.user.name))
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("li", [
+                                post.category
+                                  ? _c("i", { staticClass: "icon-folder-open" })
+                                  : _vm._e(),
+                                _c("a", { attrs: { href: "#" } }, [
+                                  _vm._v(_vm._s(post.category.cat_name))
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(2, true)
+                            ]),
+                            _vm._v(
+                              "\n                  if (to) value passed variable inside it\n                "
+                            ),
+                            _c(
+                              "router-link",
+                              {
+                                staticClass: "pull-right",
+                                attrs: { to: "blog/" + post.id }
+                              },
+                              [
+                                _vm._v("Continue reading "),
+                                _c("i", { staticClass: "icon-angle-right" })
+                              ]
+                            )
+                          ],
+                          1
+                        )
+                      ])
+                    ])
+                  ])
+                }),
+                _vm._v(" "),
+                _vm._m(3)
+              ],
+              2
+            ),
+            _vm._v(" "),
+            _c("BlogSidebar")
+          ],
+          1
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("section", { attrs: { id: "inner-headline" } }, [
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "span4" }, [
+            _c("div", { staticClass: "inner-heading" }, [
+              _c("h2", [_vm._v("Blog left sidebar")])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "span8" }, [
+            _c("ul", { staticClass: "breadcrumb" }, [
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("i", { staticClass: "icon-home" })
+                ]),
+                _c("i", { staticClass: "icon-angle-right" })
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [_vm._v("Blog")]),
+                _c("i", { staticClass: "icon-angle-right" })
+              ]),
+              _vm._v(" "),
+              _c("li", { staticClass: "active" }, [
+                _vm._v("Blog with left sidebar")
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("i", { staticClass: "icon-calendar" }),
+      _c("a", { attrs: { href: "#" } }, [_vm._v(" Mar 23, 2013")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("i", { staticClass: "icon-comments" }),
+      _c("a", { attrs: { href: "#" } }, [_vm._v("4 Comments")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { attrs: { id: "pagination" } }, [
+      _c("span", { staticClass: "all" }, [_vm._v("Page 1 of 3")]),
+      _vm._v(" "),
+      _c("span", { staticClass: "current" }, [_vm._v("1")]),
+      _vm._v(" "),
+      _c("a", { staticClass: "inactive", attrs: { href: "#" } }, [_vm._v("2")]),
+      _vm._v(" "),
+      _c("a", { staticClass: "inactive", attrs: { href: "#" } }, [_vm._v("3")])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/public/blog/BlogSidebar.vue?vue&type=template&id=709f0f38&scoped=true&":
+/*!**************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/public/blog/BlogSidebar.vue?vue&type=template&id=709f0f38&scoped=true& ***!
+  \**************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
   return _vm._m(0)
 }
 var staticRenderFns = [
@@ -88458,512 +88683,160 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("span", { attrs: { id: "blogpost" } }, [
-      _c("section", { attrs: { id: "inner-headline" } }, [
-        _c("div", { staticClass: "container" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "span4" }, [
-              _c("div", { staticClass: "inner-heading" }, [
-                _c("h2", [_vm._v("Blog left sidebar")])
+    return _c("span", { attrs: { id: "sidebar" } }, [
+      _c("div", { staticClass: "span4" }, [
+        _c("aside", { staticClass: "right-sidebar" }, [
+          _c("div", { staticClass: "widget" }, [
+            _c("form", { staticClass: "form-search" }, [
+              _c("input", {
+                staticClass: "input-medium search-query",
+                attrs: { placeholder: "Type something", type: "text" }
+              }),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-square btn-theme",
+                  attrs: { type: "submit" }
+                },
+                [_vm._v("Search")]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "widget" }, [
+            _c("h5", { staticClass: "widgetheading" }, [_vm._v("Categories")]),
+            _vm._v(" "),
+            _c("ul", { staticClass: "cat" }, [
+              _c("li", [
+                _c("i", { staticClass: "icon-angle-right" }),
+                _c("a", { attrs: { href: "#" } }, [_vm._v("Web design")]),
+                _c("span", [_vm._v(" (20)")])
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c("i", { staticClass: "icon-angle-right" }),
+                _c("a", { attrs: { href: "#" } }, [_vm._v("Online business")]),
+                _c("span", [_vm._v(" (11)")])
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c("i", { staticClass: "icon-angle-right" }),
+                _c("a", { attrs: { href: "#" } }, [
+                  _vm._v("Marketing strategy")
+                ]),
+                _c("span", [_vm._v(" (9)")])
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c("i", { staticClass: "icon-angle-right" }),
+                _c("a", { attrs: { href: "#" } }, [_vm._v("Technology")]),
+                _c("span", [_vm._v(" (12)")])
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c("i", { staticClass: "icon-angle-right" }),
+                _c("a", { attrs: { href: "#" } }, [_vm._v("About finance")]),
+                _c("span", [_vm._v(" (18)")])
               ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "widget" }, [
+            _c("h5", { staticClass: "widgetheading" }, [
+              _vm._v("Latest posts")
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "span8" }, [
-              _c("ul", { staticClass: "breadcrumb" }, [
-                _c("li", [
+            _c("ul", { staticClass: "recent" }, [
+              _c("li", [
+                _c("img", {
+                  staticClass: "pull-left",
+                  attrs: { src: "img/dummies/blog/65x65/thumb1.jpg", alt: "" }
+                }),
+                _vm._v(" "),
+                _c("h6", [
                   _c("a", { attrs: { href: "#" } }, [
-                    _c("i", { staticClass: "icon-home" })
-                  ]),
-                  _c("i", { staticClass: "icon-angle-right" })
+                    _vm._v("Lorem ipsum dolor sit")
+                  ])
                 ]),
                 _vm._v(" "),
-                _c("li", [
-                  _c("a", { attrs: { href: "#" } }, [_vm._v("Blog")]),
-                  _c("i", { staticClass: "icon-angle-right" })
+                _c("p", [
+                  _vm._v(
+                    "\n                  Mazim alienum appellantur eu cu ullum officiis pro pri\n                "
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("img", {
+                    staticClass: "pull-left",
+                    attrs: { src: "img/dummies/blog/65x65/thumb2.jpg", alt: "" }
+                  })
                 ]),
                 _vm._v(" "),
-                _c("li", { staticClass: "active" }, [
-                  _vm._v("Blog with left sidebar")
+                _c("h6", [
+                  _c("a", { attrs: { href: "#" } }, [
+                    _vm._v("Maiorum ponderum eum")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("p", [
+                  _vm._v(
+                    "\n                  Mazim alienum appellantur eu cu ullum officiis pro pri\n                "
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("img", {
+                    staticClass: "pull-left",
+                    attrs: { src: "img/dummies/blog/65x65/thumb3.jpg", alt: "" }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("h6", [
+                  _c("a", { attrs: { href: "#" } }, [
+                    _vm._v("Et mei iusto dolorum")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("p", [
+                  _vm._v(
+                    "\n                  Mazim alienum appellantur eu cu ullum officiis pro pri\n                "
+                  )
                 ])
               ])
             ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("section", { attrs: { id: "content" } }, [
-        _c("div", { staticClass: "container" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "span8" }, [
-              _c("article", [
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "span8" }, [
-                    _c("div", { staticClass: "post-image" }, [
-                      _c("div", { staticClass: "post-heading" }, [
-                        _c("h3", [
-                          _c("a", { attrs: { href: "#" } }, [
-                            _vm._v("This is an example of standard post format")
-                          ])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("img", {
-                        attrs: { src: "img/dummies/blog/img1.jpg", alt: "" }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("p", [
-                      _vm._v(
-                        "\n                    Qui ut ceteros comprehensam. Cu eos sale sanctus eligendi, id ius elitr saperet, ocurreret pertinacia pri an. No mei nibh consectetuer, semper laoreet perfecto ad qui, est rebum nulla argumentum ei. Fierent adipisci iracundia est ei, usu timeam persius\n                    ea. Usu ea justo malis, pri quando everti electram ei, ex homero omittam salutatus sed.\n                  "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "bottom-article" }, [
-                      _c("ul", { staticClass: "meta-post" }, [
-                        _c("li", [
-                          _c("i", { staticClass: "icon-calendar" }),
-                          _c("a", { attrs: { href: "#" } }, [
-                            _vm._v(" Mar 23, 2013")
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("li", [
-                          _c("i", { staticClass: "icon-user" }),
-                          _c("a", { attrs: { href: "#" } }, [_vm._v(" Admin")])
-                        ]),
-                        _vm._v(" "),
-                        _c("li", [
-                          _c("i", { staticClass: "icon-folder-open" }),
-                          _c("a", { attrs: { href: "#" } }, [_vm._v(" Blog")])
-                        ]),
-                        _vm._v(" "),
-                        _c("li", [
-                          _c("i", { staticClass: "icon-comments" }),
-                          _c("a", { attrs: { href: "#" } }, [
-                            _vm._v("4 Comments")
-                          ])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        { staticClass: "pull-right", attrs: { href: "#" } },
-                        [
-                          _vm._v("Continue reading "),
-                          _c("i", { staticClass: "icon-angle-right" })
-                        ]
-                      )
-                    ])
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("article", [
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "span8" }, [
-                    _c("div", { staticClass: "post-slider" }, [
-                      _c("div", { staticClass: "post-heading" }, [
-                        _c("h3", [
-                          _c("a", { attrs: { href: "#" } }, [
-                            _vm._v("This is an example of slider post format")
-                          ])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "flexslider" }, [
-                        _c("ul", { staticClass: "slides" }, [
-                          _c("li", [
-                            _c("img", {
-                              attrs: {
-                                src: "img/dummies/blog/img1.jpg",
-                                alt: ""
-                              }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _c("li", [
-                            _c("img", {
-                              attrs: {
-                                src: "img/dummies/blog/img2.jpg",
-                                alt: ""
-                              }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _c("li", [
-                            _c("img", {
-                              attrs: {
-                                src: "img/dummies/blog/img3.jpg",
-                                alt: ""
-                              }
-                            })
-                          ])
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("p", [
-                      _vm._v(
-                        "\n                    Qui ut ceteros comprehensam. Cu eos sale sanctus eligendi, id ius elitr saperet, ocurreret pertinacia pri an. No mei nibh consectetuer, semper laoreet perfecto ad qui, est rebum nulla argumentum ei. Fierent adipisci iracundia est ei, usu timeam persius\n                    ea. Usu ea justo malis, pri quando everti electram ei, ex homero omittam salutatus sed.\n                  "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "bottom-article" }, [
-                      _c("ul", { staticClass: "meta-post" }, [
-                        _c("li", [
-                          _c("i", { staticClass: "icon-calendar" }),
-                          _c("a", { attrs: { href: "#" } }, [
-                            _vm._v(" Mar 23, 2013")
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("li", [
-                          _c("i", { staticClass: "icon-user" }),
-                          _c("a", { attrs: { href: "#" } }, [_vm._v(" Admin")])
-                        ]),
-                        _vm._v(" "),
-                        _c("li", [
-                          _c("i", { staticClass: "icon-folder-open" }),
-                          _c("a", { attrs: { href: "#" } }, [_vm._v(" Blog")])
-                        ]),
-                        _vm._v(" "),
-                        _c("li", [
-                          _c("i", { staticClass: "icon-comments" }),
-                          _c("a", { attrs: { href: "#" } }, [
-                            _vm._v("4 Comments")
-                          ])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        { staticClass: "pull-right", attrs: { href: "#" } },
-                        [
-                          _vm._v("Continue reading "),
-                          _c("i", { staticClass: "icon-angle-right" })
-                        ]
-                      )
-                    ])
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("article", [
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "span8" }, [
-                    _c("div", { staticClass: "post-quote" }, [
-                      _c("div", { staticClass: "post-heading" }, [
-                        _c("h3", [
-                          _c("a", { attrs: { href: "#" } }, [
-                            _vm._v("Nice example of quote post format below")
-                          ])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("blockquote", [
-                        _c("i", { staticClass: "icon-quote-left" }),
-                        _vm._v(
-                          " Lorem ipsum dolor sit amet, ei quod constituto qui. Summo labores expetendis ad quo, lorem luptatum et vis. No qui vidisse signiferumque...\n                    "
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "bottom-article" }, [
-                      _c("ul", { staticClass: "meta-post" }, [
-                        _c("li", [
-                          _c("i", { staticClass: "icon-calendar" }),
-                          _c("a", { attrs: { href: "#" } }, [
-                            _vm._v(" Mar 23, 2013")
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("li", [
-                          _c("i", { staticClass: "icon-user" }),
-                          _c("a", { attrs: { href: "#" } }, [_vm._v(" Admin")])
-                        ]),
-                        _vm._v(" "),
-                        _c("li", [
-                          _c("i", { staticClass: "icon-folder-open" }),
-                          _c("a", { attrs: { href: "#" } }, [_vm._v(" Blog")])
-                        ]),
-                        _vm._v(" "),
-                        _c("li", [
-                          _c("i", { staticClass: "icon-comments" }),
-                          _c("a", { attrs: { href: "#" } }, [
-                            _vm._v("4 Comments")
-                          ])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        { staticClass: "pull-right", attrs: { href: "#" } },
-                        [
-                          _vm._v("Continue reading "),
-                          _c("i", { staticClass: "icon-angle-right" })
-                        ]
-                      )
-                    ])
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("article", [
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "span8" }, [
-                    _c("div", { staticClass: "post-video" }, [
-                      _c("div", { staticClass: "post-heading" }, [
-                        _c("h3", [
-                          _c("a", { attrs: { href: "#" } }, [
-                            _vm._v("Amazing video post format here")
-                          ])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "video-container" }, [
-                        _c("iframe", {
-                          attrs: {
-                            src:
-                              "http://player.vimeo.com/video/30585464?title=0&byline=0"
-                          }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("p", [
-                      _vm._v(
-                        "\n                    Qui ut ceteros comprehensam. Cu eos sale sanctus eligendi, id ius elitr saperet, ocurreret pertinacia pri an. No mei nibh consectetuer, semper laoreet perfecto ad qui, est rebum nulla argumentum ei. Fierent adipisci iracundia est ei, usu timeam persius\n                    ea. Usu ea justo malis, pri quando everti electram ei.\n                  "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "bottom-article" }, [
-                      _c("ul", { staticClass: "meta-post" }, [
-                        _c("li", [
-                          _c("i", { staticClass: "icon-calendar" }),
-                          _c("a", { attrs: { href: "#" } }, [
-                            _vm._v(" Mar 23, 2013")
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("li", [
-                          _c("i", { staticClass: "icon-user" }),
-                          _c("a", { attrs: { href: "#" } }, [_vm._v(" Admin")])
-                        ]),
-                        _vm._v(" "),
-                        _c("li", [
-                          _c("i", { staticClass: "icon-folder-open" }),
-                          _c("a", { attrs: { href: "#" } }, [_vm._v(" Blog")])
-                        ]),
-                        _vm._v(" "),
-                        _c("li", [
-                          _c("i", { staticClass: "icon-comments" }),
-                          _c("a", { attrs: { href: "#" } }, [
-                            _vm._v("4 Comments")
-                          ])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        { staticClass: "pull-right", attrs: { href: "#" } },
-                        [
-                          _vm._v("Continue reading "),
-                          _c("i", { staticClass: "icon-angle-right" })
-                        ]
-                      )
-                    ])
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { attrs: { id: "pagination" } }, [
-                _c("span", { staticClass: "all" }, [_vm._v("Page 1 of 3")]),
-                _vm._v(" "),
-                _c("span", { staticClass: "current" }, [_vm._v("1")]),
-                _vm._v(" "),
-                _c("a", { staticClass: "inactive", attrs: { href: "#" } }, [
-                  _vm._v("2")
-                ]),
-                _vm._v(" "),
-                _c("a", { staticClass: "inactive", attrs: { href: "#" } }, [
-                  _vm._v("3")
-                ])
-              ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "widget" }, [
+            _c("h5", { staticClass: "widgetheading" }, [
+              _vm._v("Popular tags")
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "span4" }, [
-              _c("aside", { staticClass: "right-sidebar" }, [
-                _c("div", { staticClass: "widget" }, [
-                  _c("form", { staticClass: "form-search" }, [
-                    _c("input", {
-                      staticClass: "input-medium search-query",
-                      attrs: { placeholder: "Type something", type: "text" }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-square btn-theme",
-                        attrs: { type: "submit" }
-                      },
-                      [_vm._v("Search")]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "widget" }, [
-                  _c("h5", { staticClass: "widgetheading" }, [
-                    _vm._v("Categories")
-                  ]),
-                  _vm._v(" "),
-                  _c("ul", { staticClass: "cat" }, [
-                    _c("li", [
-                      _c("i", { staticClass: "icon-angle-right" }),
-                      _c("a", { attrs: { href: "#" } }, [_vm._v("Web design")]),
-                      _c("span", [_vm._v(" (20)")])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", { staticClass: "icon-angle-right" }),
-                      _c("a", { attrs: { href: "#" } }, [
-                        _vm._v("Online business")
-                      ]),
-                      _c("span", [_vm._v(" (11)")])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", { staticClass: "icon-angle-right" }),
-                      _c("a", { attrs: { href: "#" } }, [
-                        _vm._v("Marketing strategy")
-                      ]),
-                      _c("span", [_vm._v(" (9)")])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", { staticClass: "icon-angle-right" }),
-                      _c("a", { attrs: { href: "#" } }, [_vm._v("Technology")]),
-                      _c("span", [_vm._v(" (12)")])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", { staticClass: "icon-angle-right" }),
-                      _c("a", { attrs: { href: "#" } }, [
-                        _vm._v("About finance")
-                      ]),
-                      _c("span", [_vm._v(" (18)")])
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "widget" }, [
-                  _c("h5", { staticClass: "widgetheading" }, [
-                    _vm._v("Latest posts")
-                  ]),
-                  _vm._v(" "),
-                  _c("ul", { staticClass: "recent" }, [
-                    _c("li", [
-                      _c("img", {
-                        staticClass: "pull-left",
-                        attrs: {
-                          src: "img/dummies/blog/65x65/thumb1.jpg",
-                          alt: ""
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("h6", [
-                        _c("a", { attrs: { href: "#" } }, [
-                          _vm._v("Lorem ipsum dolor sit")
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("p", [
-                        _vm._v(
-                          "\n                      Mazim alienum appellantur eu cu ullum officiis pro pri\n                    "
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("a", { attrs: { href: "#" } }, [
-                        _c("img", {
-                          staticClass: "pull-left",
-                          attrs: {
-                            src: "img/dummies/blog/65x65/thumb2.jpg",
-                            alt: ""
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("h6", [
-                        _c("a", { attrs: { href: "#" } }, [
-                          _vm._v("Maiorum ponderum eum")
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("p", [
-                        _vm._v(
-                          "\n                      Mazim alienum appellantur eu cu ullum officiis pro pri\n                    "
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("a", { attrs: { href: "#" } }, [
-                        _c("img", {
-                          staticClass: "pull-left",
-                          attrs: {
-                            src: "img/dummies/blog/65x65/thumb3.jpg",
-                            alt: ""
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("h6", [
-                        _c("a", { attrs: { href: "#" } }, [
-                          _vm._v("Et mei iusto dolorum")
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("p", [
-                        _vm._v(
-                          "\n                      Mazim alienum appellantur eu cu ullum officiis pro pri\n                    "
-                        )
-                      ])
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "widget" }, [
-                  _c("h5", { staticClass: "widgetheading" }, [
-                    _vm._v("Popular tags")
-                  ]),
-                  _vm._v(" "),
-                  _c("ul", { staticClass: "tags" }, [
-                    _c("li", [
-                      _c("a", { attrs: { href: "#" } }, [_vm._v("Web design")])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("a", { attrs: { href: "#" } }, [_vm._v("Trends")])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("a", { attrs: { href: "#" } }, [_vm._v("Technology")])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("a", { attrs: { href: "#" } }, [_vm._v("Internet")])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("a", { attrs: { href: "#" } }, [_vm._v("Tutorial")])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("a", { attrs: { href: "#" } }, [_vm._v("Development")])
-                    ])
-                  ])
-                ])
+            _c("ul", { staticClass: "tags" }, [
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [_vm._v("Web design")])
+              ]),
+              _vm._v(" "),
+              _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Trends")])]),
+              _vm._v(" "),
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [_vm._v("Technology")])
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [_vm._v("Internet")])
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [_vm._v("Tutorial")])
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [_vm._v("Development")])
               ])
             ])
           ])
@@ -88972,6 +88845,100 @@ var staticRenderFns = [
     ])
   }
 ]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/public/blog/SingleBlog.vue?vue&type=template&id=cfe4bec8&scoped=true&":
+/*!*************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/public/blog/SingleBlog.vue?vue&type=template&id=cfe4bec8&scoped=true& ***!
+  \*************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("span", { attrs: { id: "singleblog" } }, [
+    _c("section", { attrs: { id: "content" } }, [
+      _c("div", { staticClass: "container" }, [
+        _c(
+          "div",
+          { staticClass: "row" },
+          [
+            _c("div", { staticClass: "span8" }, [
+              _c("article", [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "span8" }, [
+                    _c("div", { staticClass: "post-image" }, [
+                      _c("div", { staticClass: "post-heading" }, [
+                        _c("h3", [
+                          _c("a", { attrs: { href: "#" } }, [
+                            _vm._v(" " + _vm._s(_vm.singlepost.title))
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("img", {
+                        attrs: {
+                          src: "uploadimage/" + _vm.singlepost.photo,
+                          alt: ""
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("p", [
+                      _vm._v(
+                        "\n               " +
+                          _vm._s(_vm.singlepost.description) +
+                          "\n              "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "bottom-article" }, [
+                      _c("ul", { staticClass: "meta-post" }, [
+                        _vm.singlepost.user
+                          ? _c("li", [
+                              _c("i", { staticClass: "icon-user" }),
+                              _c("a", { attrs: { href: "#" } }, [
+                                _vm._v(" " + _vm._s(_vm.singlepost.user.name))
+                              ])
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.singlepost.category
+                          ? _c("li", [
+                              _c("i", { staticClass: "icon-folder-open" }),
+                              _c("a", { attrs: { href: "#" } }, [
+                                _vm._v(
+                                  " " + _vm._s(_vm.singlepost.category.cat_name)
+                                )
+                              ])
+                            ])
+                          : _vm._e()
+                      ])
+                    ])
+                  ])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("BlogSidebar")
+          ],
+          1
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -106157,6 +106124,144 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/public/blog/BlogSidebar.vue":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/public/blog/BlogSidebar.vue ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _BlogSidebar_vue_vue_type_template_id_709f0f38_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BlogSidebar.vue?vue&type=template&id=709f0f38&scoped=true& */ "./resources/js/components/public/blog/BlogSidebar.vue?vue&type=template&id=709f0f38&scoped=true&");
+/* harmony import */ var _BlogSidebar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BlogSidebar.vue?vue&type=script&lang=js& */ "./resources/js/components/public/blog/BlogSidebar.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _BlogSidebar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _BlogSidebar_vue_vue_type_template_id_709f0f38_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _BlogSidebar_vue_vue_type_template_id_709f0f38_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "709f0f38",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/public/blog/BlogSidebar.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/public/blog/BlogSidebar.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/components/public/blog/BlogSidebar.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BlogSidebar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./BlogSidebar.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/public/blog/BlogSidebar.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BlogSidebar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/public/blog/BlogSidebar.vue?vue&type=template&id=709f0f38&scoped=true&":
+/*!********************************************************************************************************!*\
+  !*** ./resources/js/components/public/blog/BlogSidebar.vue?vue&type=template&id=709f0f38&scoped=true& ***!
+  \********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BlogSidebar_vue_vue_type_template_id_709f0f38_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./BlogSidebar.vue?vue&type=template&id=709f0f38&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/public/blog/BlogSidebar.vue?vue&type=template&id=709f0f38&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BlogSidebar_vue_vue_type_template_id_709f0f38_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BlogSidebar_vue_vue_type_template_id_709f0f38_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/public/blog/SingleBlog.vue":
+/*!************************************************************!*\
+  !*** ./resources/js/components/public/blog/SingleBlog.vue ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _SingleBlog_vue_vue_type_template_id_cfe4bec8_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SingleBlog.vue?vue&type=template&id=cfe4bec8&scoped=true& */ "./resources/js/components/public/blog/SingleBlog.vue?vue&type=template&id=cfe4bec8&scoped=true&");
+/* harmony import */ var _SingleBlog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SingleBlog.vue?vue&type=script&lang=js& */ "./resources/js/components/public/blog/SingleBlog.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _SingleBlog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _SingleBlog_vue_vue_type_template_id_cfe4bec8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _SingleBlog_vue_vue_type_template_id_cfe4bec8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "cfe4bec8",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/public/blog/SingleBlog.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/public/blog/SingleBlog.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/public/blog/SingleBlog.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SingleBlog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./SingleBlog.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/public/blog/SingleBlog.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SingleBlog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/public/blog/SingleBlog.vue?vue&type=template&id=cfe4bec8&scoped=true&":
+/*!*******************************************************************************************************!*\
+  !*** ./resources/js/components/public/blog/SingleBlog.vue?vue&type=template&id=cfe4bec8&scoped=true& ***!
+  \*******************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SingleBlog_vue_vue_type_template_id_cfe4bec8_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./SingleBlog.vue?vue&type=template&id=cfe4bec8&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/public/blog/SingleBlog.vue?vue&type=template&id=cfe4bec8&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SingleBlog_vue_vue_type_template_id_cfe4bec8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SingleBlog_vue_vue_type_template_id_cfe4bec8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/filter.js":
 /*!********************************!*\
   !*** ./resources/js/filter.js ***!
@@ -106200,11 +106305,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_admin_post_Edit_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/admin/post/Edit.vue */ "./resources/js/components/admin/post/Edit.vue");
 /* harmony import */ var _components_public_PublicHome__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/public/PublicHome */ "./resources/js/components/public/PublicHome.vue");
 /* harmony import */ var _components_public_blog_BlogPost__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/public/blog/BlogPost */ "./resources/js/components/public/blog/BlogPost.vue");
+/* harmony import */ var _components_public_blog_SingleBlog__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/public/blog/SingleBlog */ "./resources/js/components/public/blog/SingleBlog.vue");
  //category
 
 
 
  //post
+
 
 
 
@@ -106242,6 +106349,9 @@ var routes = [{
 }, {
   path: '/blog',
   component: _components_public_blog_BlogPost__WEBPACK_IMPORTED_MODULE_8__["default"]
+}, {
+  path: '/blog/:id',
+  component: _components_public_blog_SingleBlog__WEBPACK_IMPORTED_MODULE_9__["default"]
 }];
 
 /***/ }),
@@ -106258,7 +106368,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   state: {
     category: [],
-    post: []
+    post: [],
+    blogpost: [],
+    singlepost: []
   },
   getters: {
     getCategory: function getCategory(state) {
@@ -106266,21 +106378,41 @@ __webpack_require__.r(__webpack_exports__);
     },
     getPost: function getPost(state) {
       return state.post;
+    },
+    getblogPost: function getblogPost(state) {
+      return state.blogpost;
+    },
+    singlepost: function singlepost(state) {
+      return state.singlepost;
     }
   },
   actions: {
     allCategory: function allCategory(context) {
       axios.get('/category').then(function (response) {
         // debugger;
-        console.log(response.data.categories);
+        // console.log(response.data.categories);
         context.commit('categories', response.data.categories);
       });
     },
     allPost: function allPost(context) {
       axios.get('/post').then(function (response) {
         // debugger;
-        console.log(response.data.posts);
+        // console.log(response.data.posts);
         context.commit('posts', response.data.posts);
+      });
+    },
+    getblogPost: function getblogPost(context) {
+      axios.get('/blogpost').then(function (response) {
+        // debugger;
+        // console.log(response.data.blogpost);
+        context.commit('blogs', response.data.blogpost);
+      });
+    },
+    getPostById: function getPostById(context, id) {
+      debugger;
+      axios.get('/singlepost/' + id).then(function (response) {
+        console.log(response.data.post);
+        context.commit('singlePost', response.data.post);
       });
     }
   },
@@ -106290,6 +106422,12 @@ __webpack_require__.r(__webpack_exports__);
     },
     posts: function posts(state, data) {
       return state.post = data;
+    },
+    blogs: function blogs(state, data) {
+      return state.blogpost = data;
+    },
+    singlePost: function singlePost(state, payload) {
+      return state.singlepost = payload;
     }
   }
 });
@@ -106314,8 +106452,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\SuperBlog\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\SuperBlog\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! E:\Server\htdocs\SuperBlog\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! E:\Server\htdocs\SuperBlog\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

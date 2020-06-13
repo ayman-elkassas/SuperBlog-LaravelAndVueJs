@@ -9,6 +9,7 @@ import AddPost from './components/admin/post/New.vue';
 import EditPost from './components/admin/post/Edit.vue';
 import PublicHome from "./components/public/PublicHome";
 import BlogPost from "./components/public/blog/BlogPost";
+import SingleBlog from "./components/public/blog/SingleBlog";
 
 //export to read it from outside
 export const routes=[
@@ -24,6 +25,7 @@ export const routes=[
     //Frontend Route
     {path:'/',component:PublicHome},
     {path:'/blog',component:BlogPost},
+    {path:'/blog/:id',component:SingleBlog},
 
 ];
 
