@@ -4,6 +4,7 @@ export default {
         post:[],
         blogpost:[],
         singlepost:[],
+        latestpost:[]
     },
     getters:{
         getCategory(state){
@@ -18,6 +19,9 @@ export default {
         singlepost(state){
             return state.singlepost
         },
+        latestpost(state){
+            return state.latestpost
+        }
     },
     actions:{
         allCategory(context){
@@ -45,13 +49,34 @@ export default {
                 })
         },
         getPostById(context,id){
-            debugger;
             axios.get('/singlepost/'+id)
                 .then((response)=>{
-                    console.log(response.data.post);
                     context.commit('singlePost',response.data.post)
                 })
         },
+        latestPost(context){
+            axios.get('/latestpost')
+                .then((response)=>{
+                    // console.log(response.data)
+                    context.commit('latestpost',response.data.posts)
+                })
+        },
+        getPostByCatId(context,payload){
+            axios.get('/categorypost/'+payload)
+                .then((response)=>{
+                    context.commit('getPostByCatId',response.data.posts)
+                })
+        },
+        RealSearch(context,payload){
+            //get or post => get why?
+            //there is not data attach it in your http request
+            //attach with uri only keyword search
+            //when data in your link then request is get
+            axios.get('search?s='+payload)
+                .then((response)=>{
+                    context.commit('getSearchPost',response.data.blogpost)
+                })
+        }
     },
     mutations:{
         categories(state,data){
@@ -66,6 +91,17 @@ export default {
         singlePost(state,payload){
             return state.singlepost = payload
         },
+        latestpost(state,payload){
+            state.latestpost = payload
+        },
+        getPostByCatId(state,payload){
+            state.blogpost = payload
+        },
+        getSearchPost(state,payload){
+            console.log(payload);
+            state.blogpost = payload
+        }
+
     }
 
 }

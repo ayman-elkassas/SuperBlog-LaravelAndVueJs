@@ -46,5 +46,8 @@ Route::group(['middleware'=>['auth']],function (){
 });
 
 //Frontend Route
-Route::get('/blogpost','BlogController@get_all_plog_post');
+Route::get('/blogpost','BlogController@get_all_blog_post');
 Route::get('/singlepost/{id}','BlogController@getpost_by_id');
+Route::get('/latestpost','BlogController@latest_post');
+Route::get('/search','BlogController@search_post');
+Route::get('/categorypost/{id}','BlogController@get_all_post_by_cat_id');

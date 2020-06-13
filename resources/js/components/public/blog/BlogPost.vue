@@ -41,7 +41,7 @@
                       <li><i v-if="post.category" class="icon-folder-open"></i><a href="#">{{post.category.cat_name}}</a></li>
                       <li><i class="icon-comments"></i><a href="#">4 Comments</a></li>
                     </ul>
-                      if (to) value passed variable inside it
+<!--                      if (to) value passed variable inside it-->
                     <router-link :to="`blog/${post.id}`" class="pull-right">Continue reading <i class="icon-angle-right"></i></router-link>
                   </div>
                 </div>
@@ -68,16 +68,30 @@
         components:{
             BlogSidebar
         },
-        mounted() {
-            //launch action and get data
+        mounted(){
             this.$store.dispatch('getblogPost');
         },
         computed:{
+            //any change in state variable that getblogPost getter listen on it
+            //update in realtime
             blogpost(){
-                return this.$store.getters.getblogPost;
-            },
+                return this.$store.getters.getblogPost
+            }
         },
         methods:{
+            getAllCategoryPost(){
+                if(this.$route.params.id!=null){
+                    this.$store.dispatch('getPostByCatId',this.$route.params.id);
+                }else{
+                    this.$store.dispatch('getblogPost');
+                }
+            }
+        },
+        //watch fire event when $route
+        watch:{
+            $route(to,from){
+                this.getAllCategoryPost();
+            }
         }
     }
 </script>
